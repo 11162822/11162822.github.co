@@ -28,3 +28,11 @@ a {
 	font-size: 20px;
 	color:black
 }
+p {
+	font-size: 10px;
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+	color:GREY;
+	text-align: center;
+	text-justify: auto;
+	
+}
