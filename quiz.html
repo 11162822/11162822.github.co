@@ -1,27 +1,26 @@
 <div id="quiz"></div>
 <button id="submit">Get Results</button>
 <div id="results"></div>
- <script>   
- 
 
+<script>
 var myQuestions = [
   {
-    question: "whats druski  famous quote",
-    answers: { what do you mean by that?
-      a: Another one
-      b: what do you mean by that?
-      c: GOD DID!
-      d: Did you pray today?
+    question: "What's Druski's famous quote?",
+    answers: {
+      a: "Another one",
+      b: "What do you mean by that?",
+      c: "GOD DID!",
+      d: "Did you pray today?"
     },
     correctAnswer: 'b'
   },
   {
-    question: "Which youtube group is chunkz a part of?",
+    question: "Which YouTube group is Chunkz a part of?",
     answers: {
-      a: Sidemen
-      b: AMP
-      c: FAZE
-      d: Beta Squad
+      a: "Sidemen",
+      b: "AMP",
+      c: "FAZE",
+      d: "Beta Squad"
     },
     correctAnswer: 'd'
   }
@@ -36,14 +35,13 @@ generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
 function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
 
   function showQuestions(questions, quizContainer){
-   
     var output = [];
     var answers;
 
-     for(var i=0; i<questions.length; i++){     
-           answers = [];     
+    for(var i=0; i<questions.length; i++){
+      answers = [];
 
-      for(letter in questions[i].answers){        
+      for(letter in questions[i].answers){
         answers.push(
           '<label>'
             + '<input type="radio" name="question'+i+'" value="'+letter+'">'
@@ -58,50 +56,35 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
         + '<div class="answers">' + answers.join('') + '</div>'
       );
     }
-   
+
     quizContainer.innerHTML = output.join('');
   }
 
   function showResults(questions, quizContainer, resultsContainer){
-   
-
     var answerContainers = quizContainer.querySelectorAll('.answers');
-   
-   
     var userAnswer = '';
     var numCorrect = 0;
-   
-   
+
     for(var i=0; i<questions.length; i++){
-     
       userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
-     
-     
-      if(userAnswer===questions[i].correctAnswer){
-       
+
+      if(userAnswer === questions[i].correctAnswer){
         numCorrect++;
-       
-     
         answerContainers[i].style.color = 'lightgreen';
       }
-     
       else{
-     
         answerContainers[i].style.color = 'red';
       }
     }
 
-   
     resultsContainer.innerHTML = numCorrect + ' out of ' + questions.length;
   }
 
-
   showQuestions(questions, quizContainer);
- 
- 
+
   submitButton.onclick = function(){
     showResults(questions, quizContainer, resultsContainer);
   }
 
 }
-   </script>
+</script>
